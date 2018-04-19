@@ -17,7 +17,7 @@ E.g., String[2][2][2] arr = {
 Steps we take to manipulate data;
 
 ### Linear search
-Good for looking for multiple values in an array with repeated numbers;
+Good for looking for all matches;
 
 ### Binary search
-Good for looking for single values in a not-duplicate array;
+Good for looking for one match if there are no duplicate values;

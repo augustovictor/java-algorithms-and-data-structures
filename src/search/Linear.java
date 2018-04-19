@@ -1,9 +1,5 @@
 package search;
 
-import javax.sound.sampled.Line;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 public class Linear {
     public static int generateRandomNumber() {
         return (int) (Math.random()*10) + 10;
@@ -15,7 +11,7 @@ public class Linear {
         }
     }
 
-    public static int getValueByIndes(int[] a, int index) {
+    public static int getValueByIndex(int[] a, int index) {
         if (index < a.length) return a[index];
         return 0;
     }
@@ -30,15 +26,45 @@ public class Linear {
         return contains;
     }
 
+    public static void removeByIndex(int[] a, int index) {
+        if (index < a.length) {
+            for (int i = index; i < (a.length -1); i++) {
+                a[i] = a[i + 1];
+            }
+        }
+    }
+
+    public static String linearSearchValue(int[] a, int value) {
+        String indexesWithMatch = "";
+
+        for(int i = 0; i < a.length; i++) {
+            if (a[i] == value) indexesWithMatch += " " + i;
+        }
+
+        return indexesWithMatch;
+    }
+
     public static void main(String[] args) {
-        int[] arr = new int[10];
+        int[] arr = new int[13];
 
         for (int i = 0; i < arr.length; i++) {
             arr[i] = Linear.generateRandomNumber();
         }
 
+        System.out.println("Array");
         Linear.printArray(arr);
-        System.out.println(Linear.getValueByIndes(arr, 12));
+
+        System.out.println("getValueByIndex");
+        System.out.println(Linear.getValueByIndex(arr, 12));
+
+        System.out.println("Whether array contains value 12");
         System.out.println("Array contains value 12: " + Linear.arrayContainsValue(arr, 12));
+
+        System.out.println("Array with removed index 1");
+        Linear.removeByIndex(arr, 7);
+        Linear.printArray(arr);
+
+        System.out.println("Indexes with value 12");
+        System.out.println(Linear.linearSearchValue(arr, 12));
     }
 }
